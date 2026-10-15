@@ -92,12 +92,6 @@ function setMenuOpen(open) {
     menuToggle.setAttribute('aria-expanded', String(open));
 }
 menuToggle.addEventListener('click', () => setMenuOpen(!navLinks.classList.contains('active')));
-menuToggle.addEventListener('keydown', event => {
-    if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault();
-        menuToggle.click();
-    }
-});
 document.addEventListener('keydown', event => {
     if (event.key === 'Escape') setMenuOpen(false);
 });

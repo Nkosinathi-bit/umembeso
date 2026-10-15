@@ -46,7 +46,9 @@ body { font-family: 'Jost', sans-serif; background-color: var(--bg-cream); color
 .nav-links a { text-decoration: none; color: var(--bg-tan); font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; transition: 0.3s; border-bottom: 1px solid transparent; }
 #navbar.scrolled .nav-links a { color: var(--text-dark); }
 .nav-links a:hover { color: var(--gold-bright); border-bottom: 1px solid var(--gold-bright); }
-.menu-icon { display: none; font-size: 2rem; color: var(--bg-tan); cursor: pointer; }
+.menu-icon { display: none; width: 44px; height: 44px; padding: 8px; border: 0; border-radius: 4px; background: transparent; font: inherit; color: var(--bg-tan); cursor: pointer; }
+.menu-icon svg { display: block; width: 28px; height: 28px; }
+.menu-icon:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 3px; }
 #navbar.scrolled .menu-icon { color: var(--text-dark); }
 
 /* HERO */
