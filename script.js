@@ -46,7 +46,7 @@ function type() {
 type();
 
 /* COUNTDOWN */
-const eventDate = new Date("Oct 31, 2026 09:00:00").getTime();
+const eventDate = new Date("2026-10-31T09:00:00+02:00").getTime();
 const x = setInterval(function() {
     const now = new Date().getTime();
     const distance = eventDate - now;
@@ -86,33 +86,35 @@ revealElements.forEach(el => { observer.observe(el); });
 /* MOBILE MENU */
 const menuToggle = document.getElementById('menu-toggle');
 const navLinks = document.querySelector('.nav-links');
-menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    if (navLinks.classList.contains('active')) {
-        navLinks.style.display = 'flex';
-        navLinks.style.flexDirection = 'column';
-        navLinks.style.position = 'absolute';
-        navLinks.style.top = '80px';
-        navLinks.style.left = '0';
-        navLinks.style.width = '100%';
-        navLinks.style.background = 'var(--bg-dark)';
-        navLinks.style.padding = '20px';
-        navLinks.style.zIndex = '999';
-    } else {
-        navLinks.style.display = 'none';
+function setMenuOpen(open) {
+    navLinks.classList.toggle('active', open);
+    navLinks.removeAttribute('style');
+    menuToggle.setAttribute('aria-expanded', String(open));
+}
+menuToggle.addEventListener('click', () => setMenuOpen(!navLinks.classList.contains('active')));
+menuToggle.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        menuToggle.click();
     }
+});
+document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') setMenuOpen(false);
+});
+window.matchMedia('(min-width: 901px)').addEventListener('change', event => {
+    if (event.matches) setMenuOpen(false);
 });
 
 /* SMOOTH SCROLL & BACK TO TOP */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const selector = this.getAttribute('href');
+        const target = selector === '#' ? document.body : document.querySelector(selector);
         if (target) {
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             if (navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-                navLinks.style.display = 'none';
+                setMenuOpen(false);
             }
         }
     });
@@ -143,7 +145,7 @@ if (!bgMusic) {
     bgMusic = document.createElement('audio');
     bgMusic.id = 'bg-music';
     bgMusic.loop = true;
-    bgMusic.src = 'song.mp3';
+    bgMusic.src = 'assets/audio/song.mp3';
     document.body.appendChild(bgMusic);
 }
 
