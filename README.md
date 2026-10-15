@@ -8,6 +8,21 @@ A responsive invitation website for a family umembeso celebration, with event in
 
 [Hosted invitation](https://umembesosn.netlify.app/)
 
+## Visual preview
+
+Actual Chromium browser captures of the running site. 
+
+![Umembeso invitation website — desktop browser screenshot](docs/screenshots/desktop.jpg)
+
+<details>
+<summary>Mobile browser preview</summary>
+
+<img src="docs/screenshots/mobile.jpg" alt="Umembeso invitation website — mobile browser screenshot" width="300">
+
+</details>
+
+Desktop: 1440 × 1000 · Mobile: 390 × 844. [Capture source and provenance](docs/screenshots/capture.json).
+
 ## View locally
 
 ~~~bash
@@ -41,3 +56,4 @@ Google Fonts and Font Awesome are external styling resources. Music playback is 
 ## Project context
 
 This is a personal invitation frontend. It does not implement an RSVP database or a server-side guest-management system.
+
