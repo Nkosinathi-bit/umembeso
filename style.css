@@ -242,6 +242,7 @@ footer small { font-size: 0.8rem; color: var(--gold); letter-spacing: 2px; }
    EXTREMELY PERFECT MOBILE / TABLET RESPONSIVE DESIGN
 ========================================================= */
 @media (max-width: 900px) {
+    .reveal-left, .reveal-right { transform: translateY(30px); }
     #navbar { padding: 15px 20px; }
     .nav-links { display: none; }
     .menu-icon { display: block; }
